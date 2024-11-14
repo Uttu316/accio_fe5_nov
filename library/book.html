@@ -3,23 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book</title>
     <link href="./styles/index.css" rel="stylesheet" />
-    <title>Library</title>
   </head>
   <body>
     <div class="hero_container">
       <div class="hero_container_content">
-        <h1 class="hero_container_heading">Library</h1>
-        <p class="hero_container_subheading">Place to find your perfect book</p>
+        <h1 class="hero_container_heading" id="book_title">Library</h1>
+        <p class="hero_container_subheading" id="book_subtitle">
+          A perfect book for you
+        </p>
       </div>
     </div>
-    <section class="books_container">
-      <h2 class="books_container_heading">Trending Books</h2>
-      <div id="book_store"></div>
-    </section>
 
+    <section id="book_detials"></section>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="./scripts/main.js"></script>
-    <script src="./scripts/books.js"></script>
+    <script src="./scripts/book.js"></script>
   </body>
 </html>
