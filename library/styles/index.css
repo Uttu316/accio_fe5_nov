@@ -118,3 +118,9 @@
     color:  goldenrod;
     font-size: 14px;
 }
+
+.book_not_sale{
+    font-size: 14px;
+    color: salmon;
+    font-weight: bold;
+}

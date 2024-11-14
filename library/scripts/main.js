@@ -28,7 +28,7 @@ const getBooks = async () => {
 };
 
 const showBooks = (books) => {
-  let names = document.getElementById("names");
+  let bookStore = $("#book_store");
   if (books && books.length) {
     //there are some books
 
@@ -37,7 +37,7 @@ const showBooks = (books) => {
       return card;
     });
 
-    names.append(...cards); // dom manipluation should be one time
+    bookStore.append(...cards); // dom manipluation should be one time
   } else {
     // there is no book
     names.innerHTML = "No books available";
@@ -45,10 +45,59 @@ const showBooks = (books) => {
 };
 
 const createBookCard = (book) => {
-  const title = document.createElement("p");
-  title.classList.add("book_title");
-  let name = book.volumeInfo?.title || "Book name";
-  title.innerHTML = name;
-  return title;
+  console.log(book);
+  const { volumeInfo, saleInfo } = book;
+
+  const {
+    title,
+    authors,
+    imageLinks,
+    description,
+    ratingsCount = 5,
+    publishedDate,
+  } = volumeInfo;
+
+  const { thumbnail } = imageLinks;
+  const { retailPrice } = saleInfo;
+  const { amount, countryCode = "INR" } = retailPrice || {};
+  let writter = "Unkown";
+
+  if (authors && authors.length) {
+    writter = authors[0];
+  }
+
+  let card = $(`<div class="book_card">
+          <div class="book_img_box">
+            <img
+              src=${thumbnail}
+              class="book_img"
+              alt=${title}
+            />
+          </div>
+          <div class="book_card_content">
+            <p class="book_title">${title}</p>
+            <p class="book_description">
+             ${description}
+            </p>
+            <p class="book_author">${writter}</p>
+            <div class="book_price_date_section">
+              <span>
+                Pub:<span class="book_publish_date"> ${publishedDate}</span>
+              </span>
+             ${
+               amount
+                 ? `<span class="book_price"> ${Math.ceil(
+                     amount
+                   )} ${countryCode}</span>`
+                 : `<span class="book_not_sale">Not For Sale</span>`
+             }
+            </div>
+          </div>
+          <p class="book_ratings">
+            <span class="book_rating_star">${ratingsCount} star</span> Rating
+          </p>
+        </div>`);
+  return card;
 };
+
 getBooks();
