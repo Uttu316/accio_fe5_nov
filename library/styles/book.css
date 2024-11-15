@@ -1,0 +1,152 @@
+
+
+#book_loader{
+    text-align: center;
+    color: salmon;
+    font-weight: bold;
+    font-size: 32px;
+    margin: 40px;
+    display: none;
+}
+
+#book_error{
+    padding: 40px;
+    color: red;
+    background-color: black;
+    font-size: 28px;
+    font-family: cursive;
+    text-align: center;
+    display: none;
+}
+
+#book_error a{
+    font-size: 24px;
+    display: block;
+   
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    color: white;
+
+}
+#book_error a:hover{
+    color: pink;
+}
+
+
+#book_detials{
+    margin: 40px;
+    display: none;
+
+}
+#book_title{
+    font-size: 24px;
+    color: cadetblue;
+    font-family: cursive;
+    max-width: 600px;
+}
+#book_subtitle{
+    font-size: 18px;
+    margin-top: 8px;
+    color: gray;
+    margin-left: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+#book_description{
+    margin: 0 auto;
+    max-width: 500px;
+    text-align: center;
+   margin-top: 20px;
+   font-size: 14px;
+}
+
+#book_description::first-letter{
+    font-size: 32px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-right: 4px;
+}
+
+#book_authors{
+    margin-top: 20px;
+}
+.book_authors_by{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+}
+.book_authors_by::after{
+    content: '';
+    width: 20px;
+    height: 2px;
+    display: inline-block;
+    background-color: black;
+   position: relative;
+   top: -5px;
+   margin-right: 8px;
+}
+#book_autor{
+    color: brown;
+    font-size: 16px;
+}
+
+#book_categories{
+    margin-top: 10px;
+    color: dimgrey;
+    font-size: 14px;
+}
+.book_category{
+    background-color: khaki;
+    padding: 4px 8px;
+    border-radius: 14px;
+    text-align: center;
+    margin: 10px 4px;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: monospace;
+    display: inline-block;
+}
+
+#book_publishers{
+    margin-top: 20px;
+}
+.book_publish{
+    color: dimgrey;
+    font-size: 14px;
+}
+#book_publisher{
+    color: black;
+}
+#book_published_date{
+    color: black;
+}
+
+#book_price{
+    margin-top: 30px;
+    font-size: 20px;
+    color: green;
+}
+#book_price.not_for_sale{
+    color: salmon;
+}
+
+.book_cta{
+    margin-top: 10px;
+}
+#book_preview{
+    font-size: 16px;
+    width: 200px;
+    padding: 4px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 4px 4px 4px #ccc;
+    background-color: darkorange;
+    color: white;
+    transition: all ease 0.3s;
+}
+#book_preview:hover{
+    background-color: chocolate;
+}
+#book_preview:active{
+    transform: scale(0.9);
+}
