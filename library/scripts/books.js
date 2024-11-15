@@ -1,3 +1,5 @@
+import { api } from "./main.js";
+
 const getBooks = async () => {
   try {
     const res = await api({

@@ -1,3 +1,5 @@
+import { api, showLoader, hideLoader } from "./main.js";
+
 const getBook = async () => {
   const bookId = new URLSearchParams(location.search).get("id"); // get bookid from URL search params
 
@@ -97,13 +99,6 @@ const showBook = (book) => {
   } else {
     alert("Oops the preview not available");
   }
-};
-
-const showLoader = () => {
-  $("#book_loader").show();
-};
-const hideLoader = () => {
-  $("#book_loader").hide();
 };
 
 const showError = () => {

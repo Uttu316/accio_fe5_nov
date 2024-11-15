@@ -1,4 +1,4 @@
-const api = async ({ path }) => {
+export const api = async ({ path }) => {
   //calls a rest api which will load the data
   const URL = `https://api.freeapi.app/api/v1/public${path}`;
 
@@ -10,4 +10,11 @@ const api = async ({ path }) => {
     console.log("Error", e, URL);
     throw e;
   }
+};
+
+export const showLoader = () => {
+  $("#book_loader").show();
+};
+export const hideLoader = () => {
+  $("#book_loader").hide();
 };
