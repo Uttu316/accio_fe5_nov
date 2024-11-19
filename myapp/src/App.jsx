@@ -1,13 +1,19 @@
+import React from "react";
+import "./App.css";
+import Header from "./components/header";
+import Footer from "./components/footer";
+import Hero from "./components/hero";
+import List from "./components/list";
 
-import "./App.css"
-
-const App = ()=>{
-
+const App = () => {
   return (
-    <div className="page">
-      <h1>Welcome to React</h1>
-    </div>
-  )
-}
+    <React.Fragment>
+      <Header />
+      <Hero />
+      <List/>
+      <Footer />
+    </React.Fragment>
+  );
+};
 
-export default App
+export default App;
