@@ -1,9 +1,9 @@
-import "./header.css";
+import styles from "./header.module.css";
 
 const Header = () => {
   return (
-    <header className="header">
-      <h2>I am a Header</h2>
+    <header className={styles.header}>
+      <h2 className={styles.header_title}>I am a Header</h2>
     </header>
   );
 };

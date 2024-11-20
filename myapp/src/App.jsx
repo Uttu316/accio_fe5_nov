@@ -1,17 +1,17 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/header";
-import Footer from "./components/footer";
-import Hero from "./components/hero";
-import List from "./components/list";
+import FirstPage from "./components/firstPage";
+import Counter from "./components/Counter";
+import Form from "./components/form";
+import UserForm from "./components/userForm";
 
 const App = () => {
   return (
     <React.Fragment>
-      <Header />
-      <Hero />
-      <List/>
-      <Footer />
+      {/* <FirstPage/> */}
+      {/* <Counter /> */}
+      {/* <Form/> */}
+      <UserForm/>
     </React.Fragment>
   );
 };
