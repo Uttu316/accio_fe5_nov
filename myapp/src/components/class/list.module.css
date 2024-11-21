@@ -1,0 +1,57 @@
+
+
+
+.list{
+    width: 340px;
+    border: 2px solid brown;
+    padding: 20px;
+    margin: 40px;
+}
+
+.taskbox{
+    display: flex;
+    align-items: center;
+}
+
+.btn{
+    margin-top: 28px;
+    margin-left: 4px;
+    font-size: 14px;
+    padding: 4px 4px;
+    border:none;
+    background-color: salmon;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn:disabled{
+    background-color: lightgray;
+    cursor: no-drop;
+}
+
+.listItems{
+    margin-top: 20px;
+}
+.listItem{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 8px;
+}
+.task{
+    font-size: 14px;
+    margin-right: 10px;
+    color: gray;
+}
+
+.dltBtn{
+    background-color: rgb(238, 129, 129);
+    border: none;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+}
