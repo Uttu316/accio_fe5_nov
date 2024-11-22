@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services";
+import Offer from "../offer";
 
 const Hooks = () => {
   const [dogs, setDogs] = useState([]);
   const [status, setStatus] = useState("loading");
+  const [offer, setOffer] = useState(false);
+
 
   const isLoading = status === "loading";
   const isError = status === "error";
@@ -33,9 +36,19 @@ const Hooks = () => {
     }
   };
 
+  const toggleOffer = ()=>{
+        setOffer(!offer)
+  }
+
   useEffect(() => {
     getDogs();
   }, []);
+
+  useEffect(() => {
+    if (status === "done" || status === "error") {
+      setOffer(true);
+    }
+  }, [status]);
 
   console.log("I am rendered");
   return (
@@ -52,6 +65,12 @@ const Hooks = () => {
         )}
         {isDogs && dogs.map((item) => <p key={item.id}>{item.name}</p>)}
         {noDogs && <h2>No dogs available</h2>}
+        {offer && <Offer/>}
+
+        <button onClick={toggleOffer}>
+            {offer?"Hide":"Show"} Offer
+        </button>
+
       </div>
     </div>
   );
