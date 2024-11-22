@@ -7,6 +7,7 @@ import UserForm from "./components/userForm";
 import ClassComp from "./components/class";
 import LifeCycleWrapper from "./components/lifeCycyle/lifeCycleWrapper";
 import Hooks from "./components/hooks";
+import Flames from "./components/flames";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       {/* <LifeCycleWrapper/>      */}
 
       <Hooks />
+      <Flames/>
     </React.Fragment>
   );
 };

@@ -1,33 +1,46 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react";
 
+const Offer = (props) => {
+    const {offerDetails} = props;
+  console.log("Offer Render");
 
+  const [time, setTime] = useState(10);
 
+  useEffect(() => {
+    console.log("Offer Rendered first time");
 
-
-
-
-
-
-
-
-const Offer = ()=>{
-    console.log("Offer Render")
-
-
-    useEffect(()=>{
-        console.log("Offer Rendered first time")
-
-        return ()=>{
-            //cleanup
-            console.log("Offer Unmounting")
+    let timer = setInterval(() => {
+      console.log("I am timer");
+      setTime((prevTime) => {
+        if (prevTime > 0) {
+          return prevTime - 1;
         }
-    },[])
-    return (
-        <div>
-                   <h2>Get 70% off</h2> 
-        </div>
 
-    )
-}
+        clearInterval(timer);
+        return prevTime;
+      });
+    }, 1000);
 
-export default Offer
+
+  
+
+    return () => {
+      //cleanup
+      clearInterval(timer);
+      console.log("Offer Unmounting");
+    };
+  }, []);
+
+  
+  useEffect(()=>{
+    console.log('Offer details changed',offerDetails)
+},[offerDetails])
+  return (
+    <div>
+      <h2>Get 70% off</h2>
+      {time} left
+    </div>
+  );
+};
+
+export default Offer;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { api } from "../../services";
 import Offer from "../offer";
 
@@ -7,7 +7,6 @@ const Hooks = () => {
   const [status, setStatus] = useState("loading");
   const [offer, setOffer] = useState(false);
 
-
   const isLoading = status === "loading";
   const isError = status === "error";
   const isSuccess = status === "done";
@@ -15,9 +14,13 @@ const Hooks = () => {
   const isDogs = isSuccess && !!dogs.length;
   const noDogs = isSuccess && !dogs.length;
 
-  const onReload = () => {
+  const offerDetails = useMemo(() => {
+    return { title: "Offer Valid Till" };
+  }, []);
+
+  const onReload = useCallback(() => {
     window.location.reload();
-  };
+  },[]);
 
   const getDogs = async () => {
     setStatus("loading");
@@ -36,9 +39,12 @@ const Hooks = () => {
     }
   };
 
-  const toggleOffer = ()=>{
-        setOffer(!offer)
-  }
+  const toggleOffer = () => {
+    setOffer(!offer);
+  };
+  const onResetDogs = () => {
+    setDogs([]);
+  };
 
   useEffect(() => {
     getDogs();
@@ -65,12 +71,9 @@ const Hooks = () => {
         )}
         {isDogs && dogs.map((item) => <p key={item.id}>{item.name}</p>)}
         {noDogs && <h2>No dogs available</h2>}
-        {offer && <Offer/>}
-
-        <button onClick={toggleOffer}>
-            {offer?"Hide":"Show"} Offer
-        </button>
-
+        {offer && <Offer offerDetails={offerDetails} />}
+        <button onClick={onResetDogs}>Reset Dogs</button>
+        <button onClick={toggleOffer}>{offer ? "Hide" : "Show"} Offer</button>
       </div>
     </div>
   );
