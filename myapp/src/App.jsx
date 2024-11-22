@@ -1,19 +1,14 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
 import FirstPage from "./components/firstPage";
 import Counter from "./components/Counter";
 import Form from "./components/form";
 import UserForm from "./components/userForm";
 import ClassComp from "./components/class";
-import LifeCycle from "./components/lifeCycyle";
+import LifeCycleWrapper from "./components/lifeCycyle/lifeCycleWrapper";
+import Hooks from "./components/hooks";
 
 const App = () => {
-
-  const [toggle,setToggle] =useState(true)
-
-  const onToggle = ()=>{
-    setToggle(!toggle)
-  }
   return (
     <React.Fragment>
       {/* <FirstPage/> */}
@@ -22,11 +17,9 @@ const App = () => {
       {/* <UserForm/> */}
 
       {/* <ClassComp  firstTask={"Wake up"}/> */}
+      {/* <LifeCycleWrapper/>      */}
 
-      {toggle&&<LifeCycle/>}
-      <button onClick={onToggle}>
-        {toggle?"Hide the Comp":"Show the COmp"}
-      </button>
+      <Hooks />
     </React.Fragment>
   );
 };
