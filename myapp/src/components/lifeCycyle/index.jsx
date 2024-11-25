@@ -14,7 +14,7 @@ class LifeCycle extends Component {
 
   async getDogs(){
    try{
-   const data =  await api({path:'/dogs'})
+   const data =  await api({path:'public/dogs'})
    if(data && data.data){
     const dogs = data.data;
     this.setState({dogs})

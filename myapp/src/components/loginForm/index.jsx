@@ -1,35 +1,36 @@
 import { useState } from "react";
 import InputItem from "../userForm/inputItem";
 import styles from "./styles.module.css";
-import { validEmail, validPassword } from "../../utils/validations";
+import { validPassword, validUsername } from "../../utils/validations";
+import { signin } from "../../services/signin";
 let intialErrors = {
-    email: "",
-    password: "",
-    error: "",
-  }
+  username: "",
+  password: "",
+  error: "",
+};
 const LoginForm = () => {
   const [state, setState] = useState({
-    email: "",
+    username: "",
     password: "",
   });
   const [errors, setErrors] = useState(intialErrors);
 
   const validateForm = () => {
-    setErrors(intialErrors)
-    const { email, password } = state;
-    let isValidEmail = validEmail(email);
+    setErrors(intialErrors);
+    const { username, password } = state;
+    let isValidUsername = validUsername(username);
 
-    if (!isValidEmail) {
-      setErrors({ ...errors,password:"", email: "Enter valid email" });
+    if (!isValidUsername) {
+      setErrors({ ...intialErrors, username: "Enter valid username" });
       return false;
     }
 
     let isValidPassword = validPassword(password);
     if (!isValidPassword) {
-      setErrors({ ...errors,email:"", password: "Enter valid password" });
+      setErrors({ ...intialErrors, password: "Enter valid password" });
       return false;
     }
-   
+
     return true;
   };
   const onInput = (e) => {
@@ -41,13 +42,24 @@ const LoginForm = () => {
     setState(newValue);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault(); // prevents the reloading the page
 
     let isVaidForm = validateForm();
 
     if (isVaidForm) {
       //submit the data
+      const data = {
+        password: state.password,
+        username: state.username,
+      };
+
+      try {
+        const userData = await signin(data);
+        console.log({ userData });
+      } catch (e) {
+        setErrors({ ...intialErrors, error: e });
+      }
     }
   };
 
@@ -58,12 +70,11 @@ const LoginForm = () => {
       <div className={styles.formContainer}>
         <form onSubmit={onSubmit}>
           <InputItem
-            placeholder={"Enter email"}
-            label={"Email"}
-            type={"email"}
-            name={"email"}
-            value={state.email}
-            error={errors.email}
+            placeholder={"Enter username"}
+            label={"Usename"}
+            name={"username"}
+            value={state.username}
+            error={errors.username}
             onChange={onInput}
           />
           <InputItem
@@ -76,7 +87,11 @@ const LoginForm = () => {
             error={errors.password}
           />
 
-          <button onClick={onSubmit}>Submit</button>
+          {!!errors.error && <p className={styles.error}>{errors.error}</p>}
+
+          <button className={styles.btn} onClick={onSubmit}>
+            Submit
+          </button>
         </form>
       </div>
     </div>

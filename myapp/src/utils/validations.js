@@ -11,10 +11,15 @@ export const validEmail = (email) => {
 export const validPassword = (password) => {
   if (!password) return false;
 
-  let passwordRegex =
-    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+  let passwordRegex = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,}$/;
 
   const isValiPassword = passwordRegex.test(password);
 
   return isValiPassword;
+};
+
+export const validUsername = (username) => {
+  if (!username) return false;
+
+  return username.length > 3;
 };

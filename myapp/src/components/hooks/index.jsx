@@ -25,7 +25,7 @@ const Hooks = () => {
   const getDogs = async () => {
     setStatus("loading");
     try {
-      const data = await api({ path: "/dogs" });
+      const data = await api({ path: "public/dogs" });
       setStatus("done");
       if (data && data.data) {
         const dogs = data.data;
