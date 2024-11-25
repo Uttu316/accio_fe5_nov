@@ -8,6 +8,7 @@ import ClassComp from "./components/class";
 import LifeCycleWrapper from "./components/lifeCycyle/lifeCycleWrapper";
 import Hooks from "./components/hooks";
 import Flames from "./components/flames";
+import UserWrapper from "./components/userWrapper";
 
 const App = () => {
   return (
@@ -20,8 +21,11 @@ const App = () => {
       {/* <ClassComp  firstTask={"Wake up"}/> */}
       {/* <LifeCycleWrapper/>      */}
 
-      <Hooks />
-      <Flames/>
+      {/* <Hooks /> */}
+      {/* <Flames/> */}
+
+
+      <UserWrapper/>
     </React.Fragment>
   );
 };

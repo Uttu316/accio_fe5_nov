@@ -1,7 +1,14 @@
 import styles from "./userform.module.css";
 
-const InputItem = ({ name,type, value, label, onChange }) => {
-
+const InputItem = ({
+  name,
+  type,
+  error,
+  placeholder,
+  value,
+  label,
+  onChange,
+}) => {
   return (
     <div className={styles.inputItem}>
       <label htmlFor={name} className={styles.label}>
@@ -10,11 +17,13 @@ const InputItem = ({ name,type, value, label, onChange }) => {
       <input
         onChange={onChange}
         value={value}
+        placeholder={placeholder}
         name={name}
         id={name}
         type={type}
         className={styles.input}
       />
+      {!!error && <p className={styles.error}>{error}</p>}
     </div>
   );
 };
