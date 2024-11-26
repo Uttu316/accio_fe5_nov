@@ -1,27 +1,59 @@
+import { useEffect, useState } from "react";
 import LoaderCard from "../loaderCard";
 import styles from "./styles.module.css";
+import ListLoader from "../listLoader";
+import { getPets } from "../../services/pets";
+import PetCard from "../petCard";
 
 const PetList = (props) => {
-  const { petTitle } = props;
+  const { petTitle, pet } = props;
+
+  const [pets, setPets] = useState([]);
+  const [status, setStatus] = useState(false);
+
+  const isLoading = status === "loading";
+  const isDone = status === "done";
+
+  const isError = status === "error";
+
+  const hasPets = isDone && !!pets.length;
+
+  const noPets = isDone && !pets.length;
+
+  const loadPets = async () => {
+    setStatus("loading");
+
+    try {
+      const pets = await getPets(pet);
+      setStatus("done");
+      setPets(pets);
+    } catch (e) {
+      setStatus("error");
+    }
+  };
+
+  useEffect(() => {
+    loadPets();
+  }, []);
+
   return (
     <section className={styles.listWrapper}>
       <h2 className={styles.listTitle}>{petTitle}</h2>
 
       <div className={styles.listContainer}>
-        <LoaderCard />
+        {isLoading && <ListLoader length={3} />}
 
-        <div className={styles.listItem}>
-          <div className={styles.imageContainer}>
-            <img
-              className={styles.image}
-              src={"https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg"}
+        {hasPets &&
+          pets.map((item, index) => (
+            <PetCard
+              key={item.id}
+              name={item.name}
+              id={item.id}
+              image={item.image}
+              desc={item.description}
+              subtitle={item.subtitle}
             />
-          </div>
-          <div className={styles.contentContainer}>
-            <p className={styles.litItemTitle}>Pet Name</p>
-            <p className={styles.litItemDescription}>Pet Breed</p>
-          </div>
-        </div>
+          ))}
       </div>
     </section>
   );

@@ -5,8 +5,8 @@ const PetShop = () => {
   return (
     <div id="petshop">
       <HeroBanner />
-      <PetList petTitle={"Dogs"} />
-      <PetList petTitle={"Cats"} />
+      <PetList petTitle={"Dogs"} pet={"dogs"} />
+      <PetList petTitle={"Cats"} pet={"cats"} />
     </div>
   );
 };
