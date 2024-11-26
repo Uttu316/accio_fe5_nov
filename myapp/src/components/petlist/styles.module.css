@@ -1,0 +1,47 @@
+
+
+.listWrapper{
+    margin: 40px;
+
+}
+
+.listTitle{
+    font-size: 32px;
+}
+.listTitle::after{
+    content: '';
+    display: block;
+    height: 2px;
+    background: red;
+    width: 100px;
+    margin-top: 4px;
+}
+
+.listContainer{
+    margin: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.listItem{
+    width: 300px;
+    box-shadow: 4px 4px 4px #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.listItem:hover .image{
+    transform: scale(1.1);
+}
+.imageContainer{
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image{
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+}

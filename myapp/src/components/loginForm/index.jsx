@@ -17,6 +17,7 @@ const LoginForm = () => {
 
   const validateForm = () => {
     setErrors(intialErrors);
+
     const { username, password } = state;
     let isValidUsername = validUsername(username);
 
