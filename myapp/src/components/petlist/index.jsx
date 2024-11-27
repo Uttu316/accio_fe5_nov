@@ -6,7 +6,7 @@ import { getPets } from "../../services/pets";
 import PetCard from "../petCard";
 
 const PetList = (props) => {
-  const { petTitle, pet } = props;
+  const { petTitle, petCategory, pet } = props;
 
   const [pets, setPets] = useState([]);
   const [status, setStatus] = useState(false);
@@ -47,6 +47,7 @@ const PetList = (props) => {
           pets.map((item, index) => (
             <PetCard
               key={item.id}
+              pet={petCategory}
               name={item.name}
               id={item.id}
               image={item.image}
