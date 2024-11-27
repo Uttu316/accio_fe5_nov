@@ -4,17 +4,14 @@ import styles from "./styles.module.css";
 import ListLoader from "../listLoader";
 import { getPets } from "../../services/pets";
 import PetCard from "../petCard";
+import useApiStatus from "../../hooks/useAPIStatus";
 
 const PetList = (props) => {
-  const { petTitle, petCategory, pet } = props;
+  const { petTitle, pet } = props;
 
   const [pets, setPets] = useState([]);
-  const [status, setStatus] = useState(false);
 
-  const isLoading = status === "loading";
-  const isDone = status === "done";
-
-  const isError = status === "error";
+  const { isDone, isLoading, setStatus } = useApiStatus();
 
   const hasPets = isDone && !!pets.length;
 
@@ -47,7 +44,7 @@ const PetList = (props) => {
           pets.map((item, index) => (
             <PetCard
               key={item.id}
-              pet={petCategory}
+              pet={pet}
               name={item.name}
               id={item.id}
               image={item.image}
