@@ -5,6 +5,7 @@ import Profile from "../pages/profile";
 import PetShop from "../pages/petshop";
 import PetDetails from "../pages/petDetails";
 import NotFound from "../pages/notFound";
+import Markdown from "../pages/markdown";
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
         <Route path="/petshop" element={<PetShop />} />
 
         <Route path="/pet/:pet/:petId" element={<PetDetails />} />
+        <Route path="/markdown" element={<Markdown />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
